@@ -103,7 +103,7 @@ SGPCA <- function(X, group_label, J = 1, tau_reg = 1, eta_reg = 1,
     U[, j] <- pcj_fit$u
     D[j] <- pcj_fit$d
 
-    X <- X - D[j] * U[, j]%*% V[, j]
+    X <- X - D[j] * U[, j]%*% t(V[, j])
   }
 
   return(list(V = V, U = U, D = D))
@@ -217,7 +217,7 @@ SGPCA.rs <- function(X, group_label, J = 1, B = 20, rho = 0.5,
     U[, j] <- pcj_fit$u
     D[j] <- pcj_fit$d
 
-    X <- X - D[j] * U[, j] %*% V[, j]
+    X <- X - D[j] * U[, j] %*% t(V[, j])
 
     if (verbose){cat("Estimating PC", j, "completed!\n")}
   }

@@ -1,7 +1,8 @@
+// [[Rcpp::depends(RcppArmadillo)]]
 #include <RcppArmadillo.h>
-using namespace Rcpp;
 #include <iostream>
 #include <string>
+using namespace Rcpp;
 
 double soft_thresholding_elementwise(double x, double lambda) {
   return std::copysign(std::max(0.0, std::abs(x) - lambda), x);
@@ -28,18 +29,20 @@ arma::vec SGPCA_cpp(const arma::mat& X, const arma::ivec& group_label,
 
   int G = arma::max(group_label);
 
+  arma::mat S = (X.t() * X) / X.n_rows;
+
   // Initialize v from sparse PCA
   arma::vec v = init_v;
+  arma::vec gamma = S * v;
+
   arma::vec v_old = v;
-  arma::vec gamma = X.t() * X * v / X.n_rows;
   arma::vec gamma_old = gamma;
 
   for (int iter = 0; iter < max_iter; ++iter) {
 
     v_old = v;
     gamma_old = gamma;
-    gamma = X * v;
-    gamma = X.t() * gamma / X.n_rows;
+    gamma = S * v;
 
     for (int g = 1; g <= G; ++g) {
       arma::uvec index_g = arma::find(group_label == g);
