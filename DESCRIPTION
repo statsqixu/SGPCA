@@ -1,0 +1,16 @@
+Package: SGPCA
+Title: Sparse Group Principal Component Analysis via Double Thresholding
+Version: 0.0.0.9000
+Authors@R: 
+    person("Qi", "Xu", , "qixu@andrew.cmu.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-1127-6523"))
+Description: This package has two main functionalities: 1. estimate leading principal components with simultaneous group and individual sparsity. 2. select sparsity tuning parameter via a resampling-based method.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: PMA, plotly, rstudioapi
+LinkingTo: Rcpp, RcppArmadillo
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
