@@ -21,7 +21,7 @@ simulator1 <- function(n = 500, G = 2000, C = 3, seed = 123){
 
   pc1 <- rep(0, G * C)
 
-  group_indices <- c(1: floor(C * G * 0.01))
+  group_indices <- c(1: floor(C * G * 0.05))
 
   signal_indices <- sample(group_indices, floor(0.8 * length(group_indices)), replace = F)
 
@@ -66,11 +66,11 @@ simulator2 <- function(n = 500, G = 2000, cond = 3, seed = 123){
   pc1 <- rep(0, G * C)
 
   if (cond == 1){
-    signal_indices <- sample(1: G * C, floor(0.01 * G * C))
+    signal_indices <- sample(1: G * C, floor(0.05 * G * C))
   } else if (cond == 2){
-    signal_indices <- c(1: floor(0.01 * G * C))
+    signal_indices <- c(1: floor(0.05 * G * C))
   } else if (cond == 3){
-    group_indices <- c(1: floor(0.01 * G * C))
+    group_indices <- c(1: floor(0.05 * G * C))
     signal_indices <- sample(group_indices, 0.8 * length(group_indices))
   }
 
@@ -117,9 +117,9 @@ simulator3 <- function(n = 500, G = 2000, seed = 123){
   pc2 <- rep(0, G * C)
   pc3 <- rep(0, G * C)
 
-  group_indices1 <- c(1: floor(C * G * 0.01))
-  group_indices2 <- c((floor(G * C * 0.01) + 1): floor(G * C * 0.02))
-  group_indices3 <- c((floor(G * C * 0.02) + 1): floor(G * C * 0.03))
+  group_indices1 <- c(1: floor(C * G * 0.05))
+  group_indices2 <- c((floor(C * G * 0.05) + 1): floor(C * G * 0.1))
+  group_indices3 <- c((floor(C * G * 0.15) + 1): floor(C * G * 0.2))
 
   signal_indices1 <- sample(group_indices1, floor(0.8 * length(group_indices1)))
   signal_indices2 <- sample(group_indices2, floor(0.8 * length(group_indices2)))
