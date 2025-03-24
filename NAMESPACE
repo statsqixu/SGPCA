@@ -3,6 +3,8 @@
 export(SGPCA)
 export(SGPCA.rs)
 export(SGPCA_1pc)
+export(estimation_error)
+export(signal_detection_error)
 export(simulator1)
 export(simulator2)
 export(simulator3)
