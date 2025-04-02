@@ -4,25 +4,27 @@
 \alias{simulator3}
 \title{Generator of simulation setting 3}
 \usage{
-simulator3(n = 500, G = 2000, seed = 123)
+simulator3(n = 100, G = 300, C = 10, seed = 123)
 }
 \arguments{
 \item{n}{sample size}
 
 \item{G}{number of genes}
 
+\item{C}{group size (e.g., number of celltypes)}
+
 \item{seed}{an integer to specify the random seed}
 }
 \value{
 \describe{
-\item{X}{data matrix of dimension n by (10G)}
-\item{group_label}{a (10G)-dimensional vector, group membership}
+\item{X}{data matrix of dimension n by (G * C)}
+\item{group_label}{a (G * C)-dimensional vector, group membership}
 \item{signal_indices1}{a vector, provides the indices of signals in PC1}
 \item{signal_indices2}{a vector, provides the indices of signals in PC2}
 \item{signal_indices3}{a vector, provides the indices of signals in PC3}
-\item{pc1}{a (10G)-dimensional vector, true PC1 by design}
-\item{pc2}{a (10G)-dimensional vector, true PC2 by design}
-\item{pc3}{a (10G)-dimensional vector, true PC3 by design}
+\item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
+\item{pc2}{a (G * C)-dimensional vector, true PC2 by design}
+\item{pc3}{a (G * C)-dimensional vector, true PC3 by design}
 }
 }
 \description{

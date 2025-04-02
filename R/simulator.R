@@ -7,13 +7,13 @@
 #'
 #' @return
 #' \describe{
-#'  \item{X}{data matrix of dimension n by (GC)}
-#'  \item{group_label}{a (GC)-dimensional vector, group membership}
+#'  \item{X}{data matrix of dimension n by (G * C)}
+#'  \item{group_label}{a (G * C)-dimensional vector, group membership}
 #'  \item{signal_indices}{a vector, provides the indices of signals in PC}
-#'  \item{pc1}{a (GC)-dimensional vector, true PC1 by design}
+#'  \item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
 #' }
 #' @export
-simulator1 <- function(n = 500, G = 2000, C = 3, seed = 123){
+simulator1 <- function(n = 100, G = 300, C = 3, seed = 123){
 
   set.seed(seed)
 
@@ -44,32 +44,29 @@ simulator1 <- function(n = 500, G = 2000, C = 3, seed = 123){
 #'
 #' @param n sample size
 #' @param G number of genes
+#' @param C group size (e.g., number of celltypes)
 #' @param cond sprsity condition (1: group sparsity, 2: individual sparsity, 3: group and individual sparsity)
 #' @param seed an integer to specify the random seed
 #'
 #' @return
 #' \describe{
-#'  \item{X}{data matrix of dimension n by (10G)}
-#'  \item{group_label}{a (10G)-dimensional vector, group membership}
+#'  \item{X}{data matrix of dimension n by (G * C)}
+#'  \item{group_label}{a (G * C)-dimensional vector, group membership}
 #'  \item{signal_indices}{a vector, provides the indices of signals in PC}
-#'  \item{pc1}{a (10G)-dimensional vector, true PC1 by design}
+#'  \item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
 #' }
 #' @export
-simulator2 <- function(n = 500, G = 2000, cond = 3, seed = 123){
+simulator2 <- function(n = 100, G = 300, C = 10, cond = 1, seed = 123){
 
   set.seed(seed)
-
-  C <- 10
 
   group_label <- rep(1: G, each = C)
 
   pc1 <- rep(0, G * C)
 
   if (cond == 1){
-    signal_indices <- sample(1: G * C, floor(0.01 * G * C))
-  } else if (cond == 2){
     signal_indices <- c(1: floor(0.01 * G * C))
-  } else if (cond == 3){
+  } else if (cond == 2){
     group_indices <- c(1: floor(0.01 * G * C))
     signal_indices <- sample(group_indices, 0.8 * length(group_indices))
   }
@@ -91,25 +88,24 @@ simulator2 <- function(n = 500, G = 2000, cond = 3, seed = 123){
 #'
 #' @param n sample size
 #' @param G number of genes
+#' @param C group size (e.g., number of celltypes)
 #' @param seed an integer to specify the random seed
 #'
 #' @return
 #' \describe{
-#'  \item{X}{data matrix of dimension n by (10G)}
-#'  \item{group_label}{a (10G)-dimensional vector, group membership}
+#'  \item{X}{data matrix of dimension n by (G * C)}
+#'  \item{group_label}{a (G * C)-dimensional vector, group membership}
 #'  \item{signal_indices1}{a vector, provides the indices of signals in PC1}
 #'  \item{signal_indices2}{a vector, provides the indices of signals in PC2}
 #'  \item{signal_indices3}{a vector, provides the indices of signals in PC3}
-#'  \item{pc1}{a (10G)-dimensional vector, true PC1 by design}
-#'  \item{pc2}{a (10G)-dimensional vector, true PC2 by design}
-#'  \item{pc3}{a (10G)-dimensional vector, true PC3 by design}
+#'  \item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
+#'  \item{pc2}{a (G * C)-dimensional vector, true PC2 by design}
+#'  \item{pc3}{a (G * C)-dimensional vector, true PC3 by design}
 #' }
 #' @export
-simulator3 <- function(n = 500, G = 2000, seed = 123){
+simulator3 <- function(n = 100, G = 300, C = 10, seed = 123){
 
   set.seed(seed)
-
-  C = 10
 
   group_label <- rep(1: G, each = C)
 

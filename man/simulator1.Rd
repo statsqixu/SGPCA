@@ -4,7 +4,7 @@
 \alias{simulator1}
 \title{Generator of simulation setting 1}
 \usage{
-simulator1(n = 500, G = 2000, C = 3, seed = 123)
+simulator1(n = 100, G = 300, C = 3, seed = 123)
 }
 \arguments{
 \item{n}{sample size}
@@ -17,10 +17,10 @@ simulator1(n = 500, G = 2000, C = 3, seed = 123)
 }
 \value{
 \describe{
-\item{X}{data matrix of dimension n by (GC)}
-\item{group_label}{a (GC)-dimensional vector, group membership}
+\item{X}{data matrix of dimension n by (G * C)}
+\item{group_label}{a (G * C)-dimensional vector, group membership}
 \item{signal_indices}{a vector, provides the indices of signals in PC}
-\item{pc1}{a (GC)-dimensional vector, true PC1 by design}
+\item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
 }
 }
 \description{

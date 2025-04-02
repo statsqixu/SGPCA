@@ -4,12 +4,14 @@
 \alias{simulator2}
 \title{Generator of simulation setting 2}
 \usage{
-simulator2(n = 500, G = 2000, cond = 3, seed = 123)
+simulator2(n = 100, G = 300, C = 10, cond = 1, seed = 123)
 }
 \arguments{
 \item{n}{sample size}
 
 \item{G}{number of genes}
+
+\item{C}{group size (e.g., number of celltypes)}
 
 \item{cond}{sprsity condition (1: group sparsity, 2: individual sparsity, 3: group and individual sparsity)}
 
@@ -17,10 +19,10 @@ simulator2(n = 500, G = 2000, cond = 3, seed = 123)
 }
 \value{
 \describe{
-\item{X}{data matrix of dimension n by (10G)}
-\item{group_label}{a (10G)-dimensional vector, group membership}
+\item{X}{data matrix of dimension n by (G * C)}
+\item{group_label}{a (G * C)-dimensional vector, group membership}
 \item{signal_indices}{a vector, provides the indices of signals in PC}
-\item{pc1}{a (10G)-dimensional vector, true PC1 by design}
+\item{pc1}{a (G * C)-dimensional vector, true PC1 by design}
 }
 }
 \description{
